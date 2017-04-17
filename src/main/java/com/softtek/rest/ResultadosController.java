@@ -12,7 +12,7 @@ import com.softtek.resultados.Resultados;
 import com.softtek.resultados.ResultadosRepository;
 
 @RestController
-@RequestMapping(value = "/api/users")
+@RequestMapping(value = "/api/resultados")
 public class ResultadosController {
 
 	@Autowired
