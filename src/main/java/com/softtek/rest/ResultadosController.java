@@ -25,7 +25,7 @@ public class ResultadosController {
 		return resultadosRepository.findAll();
 	}
 	
-	@RequestMapping(value = "/{pais}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
 	public List<String> getUltimaEjecucionPorPais(@PathVariable (name="pais") String pais){
 		
 		 //Desarrollo
