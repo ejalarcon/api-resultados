@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.softtek.resultados.Resultados;
@@ -53,8 +55,12 @@ public class ResultadosController {
 //	}
 	
 	
-	@RequestMapping(value = "/{pais,entorno}", method = RequestMethod.GET)
-	public Resultados getEjecucionPorPais(@PathVariable (name="pais") String pais, @PathVariable (name="entorno") String entorno){				 
+	@RequestMapping(
+			  value = "/paisEntorno", 
+			  params = { "pais", "entorno" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados getEjecucionPorPais(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
 		 return resultadosRepository.findByPaisAndEntorno(pais, entorno);
 	}
 	
