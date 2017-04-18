@@ -27,33 +27,6 @@ public class ResultadosController {
 		return resultadosRepository.findAll();
 	}
 	
-//	@RequestMapping(value = "/{pais}", method = RequestMethod.GET)
-//	public List<String> getUltimaEjecucionPorPais(@PathVariable (name="pais") String pais){
-//		
-//		 //Desarrollo
-//		 String oksDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getOk();
-//		 String erroresDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getError();
-//		 String avisosDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getAvisos();
-//		 
-//		 //Integrado
-//		 String oksEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getOk();
-//		 String erroresEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getError();
-//		 String avisosEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getAvisos();
-//		 
-//		 //Produccion
-//		 String oksPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getOk();
-//		 String erroresPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getError();
-//		 String avisosPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getAvisos();
-//		 
-//		 List<String> listaUltimaEjecucion = new ArrayList<String>();
-//		 
-//		 listaUltimaEjecucion.add("Produccion" + oksPro + erroresPro + avisosPro);
-//		 listaUltimaEjecucion.add("Integrado" + oksEI + erroresEI + avisosEI);
-//		 listaUltimaEjecucion.add("Desarrollo" + oksDe + erroresDe + avisosDe);
-//		 
-//		 return listaUltimaEjecucion;
-//	}
-	
 	
 	@RequestMapping(
 			  value = "/paisEntorno", 
@@ -62,6 +35,24 @@ public class ResultadosController {
 	@ResponseBody
 	public Resultados getEjecucionPorPais(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
 		 return resultadosRepository.findByPaisAndEntorno(pais, entorno);
+	}
+	
+	@RequestMapping(
+			  value = "/paisEntornoDesc", 
+			  params = { "pais", "entorno" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados getEjecucionPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return resultadosRepository.findByPaisAndEntornoOrderByFechaDesc(pais, entorno);
+	}
+	
+	@RequestMapping(
+			  value = "/paisEntornoAsc", 
+			  params = { "pais", "entorno" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados getEjecucionPorPaisAsc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return resultadosRepository.findByPaisAndEntornoOrderByFechaAsc(pais, entorno);
 	}
 	
 	
