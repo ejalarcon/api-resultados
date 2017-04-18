@@ -25,38 +25,38 @@ public class ResultadosController {
 		return resultadosRepository.findAll();
 	}
 	
-	@RequestMapping(value = "/{pais}", method = RequestMethod.GET)
-	public List<String> getUltimaEjecucionPorPais(@PathVariable (name="pais") String pais){
-		
-		 //Desarrollo
-		 String oksDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getOk();
-		 String erroresDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getError();
-		 String avisosDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getAvisos();
-		 
-		 //Integrado
-		 String oksEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getOk();
-		 String erroresEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getError();
-		 String avisosEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getAvisos();
-		 
-		 //Produccion
-		 String oksPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getOk();
-		 String erroresPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getError();
-		 String avisosPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getAvisos();
-		 
-		 List<String> listaUltimaEjecucion = new ArrayList<String>();
-		 
-		 listaUltimaEjecucion.add("Produccion" + oksPro + erroresPro + avisosPro);
-		 listaUltimaEjecucion.add("Integrado" + oksEI + erroresEI + avisosEI);
-		 listaUltimaEjecucion.add("Desarrollo" + oksDe + erroresDe + avisosDe);
-		 
-		 return listaUltimaEjecucion;
-	}
-	
-	
 //	@RequestMapping(value = "/{pais}", method = RequestMethod.GET)
-//	public Resultados getEjecucionPorPais(@PathVariable (name="pais") String pais){				 
-//		 return resultadosRepository.findByPais(pais);
+//	public List<String> getUltimaEjecucionPorPais(@PathVariable (name="pais") String pais){
+//		
+//		 //Desarrollo
+//		 String oksDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getOk();
+//		 String erroresDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getError();
+//		 String avisosDe = resultadosRepository.findByPaisAndEntorno(pais, "Desarrollo").getAvisos();
+//		 
+//		 //Integrado
+//		 String oksEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getOk();
+//		 String erroresEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getError();
+//		 String avisosEI = resultadosRepository.findByPaisAndEntorno(pais, "Integrado").getAvisos();
+//		 
+//		 //Produccion
+//		 String oksPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getOk();
+//		 String erroresPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getError();
+//		 String avisosPro = resultadosRepository.findByPaisAndEntorno(pais, "Produccion").getAvisos();
+//		 
+//		 List<String> listaUltimaEjecucion = new ArrayList<String>();
+//		 
+//		 listaUltimaEjecucion.add("Produccion" + oksPro + erroresPro + avisosPro);
+//		 listaUltimaEjecucion.add("Integrado" + oksEI + erroresEI + avisosEI);
+//		 listaUltimaEjecucion.add("Desarrollo" + oksDe + erroresDe + avisosDe);
+//		 
+//		 return listaUltimaEjecucion;
 //	}
+	
+	
+	@RequestMapping(value = "/{pais,entorno}", method = RequestMethod.GET)
+	public Resultados getEjecucionPorPais(@PathVariable (name="pais") String pais, @PathVariable (name="entorno") String entorno){				 
+		 return resultadosRepository.findByPaisAndEntorno(pais, entorno);
+	}
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
