@@ -41,7 +41,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public Resultados getEjecucionPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisAndEntornoOrderByFechaDesc(pais, entorno);
+		 return resultadosRepository.findByPaisAndEntornoOrderBySysdateDesc(pais, entorno);
 	}
 	
 	@RequestMapping(
@@ -50,7 +50,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public Resultados getEjecucionPorPaisAsc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisAndEntornoOrderByFechaAsc(pais, entorno);
+		 return resultadosRepository.findByPaisAndEntornoOrderBySysdateAsc(pais, entorno);
 	}
 	
 	
