@@ -55,7 +55,7 @@ public class ResultadosController {
 	
 	@RequestMapping(
 			  value = "/paisDesc", 
-			  params = { "pais", "entorno" }, 
+			  params = {"pais"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public Resultados getEjecucionesPorPaisDesc(@RequestParam("pais") String pais){				 
