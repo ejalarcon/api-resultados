@@ -58,8 +58,8 @@ public class ResultadosController {
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionesPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisOrderBySysdateDesc(pais, entorno);
+	public Resultados getEjecucionesPorPaisDesc(@RequestParam("pais") String pais){				 
+		 return resultadosRepository.findByPaisOrderBySysdateDesc(pais);
 	}
 	
 	
