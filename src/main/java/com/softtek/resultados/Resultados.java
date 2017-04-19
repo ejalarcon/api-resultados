@@ -1,5 +1,7 @@
 package com.softtek.resultados;
 
+import java.util.Date;
+
 public class Resultados {
 	
 	private String pais;
@@ -17,7 +19,7 @@ public class Resultados {
 	private String c204;
 	private String uuaas;
 	private String usuario;
-	private String sysdate;
+	private Date sysdate;
 	
 	
 	public String getPais() {
@@ -110,10 +112,10 @@ public class Resultados {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getSysdate() {
+	public Date getSysdate() {
 		return sysdate;
 	}
-	public void setSysdate(String sysdate) {
+	public void setSysdate(Date sysdate) {
 		this.sysdate = sysdate;
 	}
 
