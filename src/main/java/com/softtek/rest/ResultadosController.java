@@ -53,6 +53,15 @@ public class ResultadosController {
 		 return resultadosRepository.findByPaisAndEntornoOrderBySysdateAsc(pais, entorno);
 	}
 	
+	@RequestMapping(
+			  value = "/paisDesc", 
+			  params = { "pais", "entorno" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados getEjecucionesPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return resultadosRepository.findByPaisOrderBySysdateDesc(pais, entorno);
+	}
+	
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public void addEjecucion(@RequestBody Resultados resultados){
