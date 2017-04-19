@@ -1,5 +1,7 @@
 package com.softtek.resultados;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ResultadosRepository extends MongoRepository<Resultados, String> {
@@ -10,7 +12,7 @@ public interface ResultadosRepository extends MongoRepository<Resultados, String
 	
 	public Resultados findByPaisAndEntornoOrderBySysdateDesc (String pais, String entorno);
 	
-	public Resultados findByPaisOrderBySysdateDesc (String pais);
+	public List<Resultados> findByPaisOrderBySysdateDesc (String pais);
 	
 	public Resultados findByPaisAndEntornoOrderBySysdateAsc (String pais, String entorno);
 
