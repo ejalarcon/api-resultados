@@ -1,6 +1,5 @@
 package com.softtek.resultados;
 
-import java.util.Date;
 
 public class Resultados {
 	
