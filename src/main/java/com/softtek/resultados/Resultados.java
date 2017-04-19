@@ -17,6 +17,7 @@ public class Resultados {
 	private String c204;
 	private String uuaas;
 	private String usuario;
+	private String sysdate;
 	
 	
 	public String getPais() {
@@ -108,6 +109,12 @@ public class Resultados {
 	}
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	public String getSysdate() {
+		return sysdate;
+	}
+	public void setSysdate(String sysdate) {
+		this.sysdate = sysdate;
 	}
 
 }
