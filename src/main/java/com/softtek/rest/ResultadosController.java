@@ -49,7 +49,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public List<Resultados> getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
-		 return resultadosRepository.findByUuaasAndPaisOrderBySysdateDesc(uuaa, pais);
+		 return resultadosRepository.findByUuaasLikeAndPaisOrderBySysdateDesc(uuaa, pais);
 	}
 	
 	@RequestMapping(
