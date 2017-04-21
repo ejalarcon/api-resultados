@@ -48,7 +48,7 @@ public class ResultadosController {
 			  params = { "uuaa","pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String pais,@RequestParam("pais") String uuaa, @RequestParam("entorno") String entorno){				 
+	public Resultados getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String uuaa,@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
 		 return resultadosRepository.findByUuaasLikeAndPaisAndEntornoOrderBySysdateDesc(uuaa, pais, entorno);
 	}
 	
