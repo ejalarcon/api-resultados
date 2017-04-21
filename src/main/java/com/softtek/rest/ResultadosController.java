@@ -24,14 +24,7 @@ public class ResultadosController {
 	public List<Resultados> getResultados(){
 		return resultadosRepository.findAll();
 	}
-	
-	@RequestMapping(value = "/desc", method = RequestMethod.GET)
-	public List<Resultados> getResultadosOrdenados(){
-		return resultadosRepository.findAllOrderBySysdateDesc();
-	}
-	
-	
-	
+
 	@RequestMapping(
 			  value = "/paisEntorno", 
 			  params = { "pais", "entorno" }, 
