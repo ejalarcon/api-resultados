@@ -25,6 +25,12 @@ public class ResultadosController {
 		return resultadosRepository.findAll();
 	}
 	
+	@RequestMapping(value = "/desc", method = RequestMethod.GET)
+	public List<Resultados> getResultadosOrdenados(){
+		return resultadosRepository.findAllOrderBySysdateDesc();
+	}
+	
+	
 	
 	@RequestMapping(
 			  value = "/paisEntorno", 
