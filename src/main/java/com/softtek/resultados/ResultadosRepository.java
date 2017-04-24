@@ -13,6 +13,8 @@ public interface ResultadosRepository extends MongoRepository<Resultados, String
 	public Resultados findByPaisAndEntornoOrderBySysdateDesc (String pais, String entorno);
 	
 	public Resultados findByUuaasLikeAndPaisAndEntornoOrderBySysdateDesc (String pais, String uuaa, String entorno);
+
+	public Resultados findByUuaasLikeAndPaisAndEntornoOrderBySysdateAsc (String pais, String uuaa, String entorno);
 	
 	public List<Resultados> findByPaisOrderBySysdateDesc (String pais);
 	
