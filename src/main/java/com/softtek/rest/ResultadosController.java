@@ -62,6 +62,15 @@ public class ResultadosController {
 	}
 	
 	@RequestMapping(
+			  value = "/uuaaPaisAsc", 
+			  params = { "uuaa", "pais" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> getEjecucionPorUUAAPaisAsc(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
+		 return resultadosRepository.findByUuaasLikeAndPaisOrderBySysdateAsc(uuaa, pais);
+	}
+	
+	@RequestMapping(
 			  value = "/paisEntornoAsc", 
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
