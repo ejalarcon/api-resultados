@@ -67,7 +67,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public List<Resultados> getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
-		 return resultadosRepository.findByUuaasLikeAndPaisByOrderBySysdateDesc(uuaa, pais);
+		 return resultadosRepository.findAllByUuaasLikeAndPaisOrderBySysdateDesc(uuaa, pais);
 	}
 	
 	@RequestMapping(
@@ -76,7 +76,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public List<Resultados> getEjecucionPorUUAAPaisAsc(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
-		 return resultadosRepository.findByUuaasLikeAndPaisByOrderBySysdateAsc(uuaa, pais);
+		 return resultadosRepository.findAllByUuaasLikeAndPaisOrderBySysdateAsc(uuaa, pais);
 	}
 	
 	
