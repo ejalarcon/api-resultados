@@ -22,6 +22,10 @@ public interface ResultadosRepository extends MongoRepository<Resultados, String
 	
 	public List<Resultados> findByUuaasLikeAndPaisOrderBySysdateAsc (String uuaa, String pais);
 	
+	public List<Resultados> findTop100ByUuaasLikeAndPaisOrderBySysdateDesc (String uuaa, String pais);
+	
+	public List<Resultados> findTop100ByUuaasLikeAndPaisOrderBySysdateAsc (String uuaa, String pais);
+	
 	public Resultados findByPaisAndEntornoOrderBySysdateAsc (String pais, String entorno);
 
 }

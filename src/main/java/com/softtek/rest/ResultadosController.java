@@ -80,6 +80,24 @@ public class ResultadosController {
 	}
 	
 	@RequestMapping(
+			  value = "/uuaaPaisAsc2", 
+			  params = { "uuaa", "pais" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> getEjecucionPorUUAAPaisAsc100(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
+		 return resultadosRepository.findTop100ByUuaasLikeAndPaisOrderBySysdateAsc(uuaa, pais);
+	}
+	
+	@RequestMapping(
+			  value = "/uuaaPaisDesc2", 
+			  params = { "uuaa", "pais" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> getEjecucionPorUUAAPaisDesc100(@RequestParam("uuaa") String uuaa, @RequestParam("pais") String pais){				 
+		 return resultadosRepository.findTop100ByUuaasLikeAndPaisOrderBySysdateDesc(uuaa, pais);
+	}
+	
+	@RequestMapping(
 			  value = "/paisEntornoAsc", 
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
