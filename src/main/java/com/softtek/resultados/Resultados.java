@@ -18,6 +18,8 @@ public class Resultados {
 	private String c204;
 	private String uuaas;
 	private String usuario;
+	private String tipoEjecucion;
+	private String casosEjecutados;
 	private String sysdate;
 	
 	
@@ -116,6 +118,22 @@ public class Resultados {
 	}
 	public void setSysdate(String sysdate) {
 		this.sysdate = sysdate;
+	}
+	public String getTipoEjecucion()
+	{
+		return tipoEjecucion;
+	}
+	public void setTipoEjecucion(String tipoEjecucion)
+	{
+		this.tipoEjecucion = tipoEjecucion;
+	}
+	public String getCasosEjecutados()
+	{
+		return casosEjecutados;
+	}
+	public void setCasosEjecutados(String casosEjecutados)
+	{
+		this.casosEjecutados = casosEjecutados;
 	}
 
 
