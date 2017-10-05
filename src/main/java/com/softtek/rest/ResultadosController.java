@@ -84,7 +84,7 @@ public class ResultadosController {
 			  params = { "tipoEjecucion"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public List<Resultados> getEjecucionPorTipoEjecucionAsc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+	public Resultados getEjecucionPorTipoEjecucionAsc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
 		 return resultadosRepository.findByTipoEjecucionOrderBySysdateAsc(tipoEjecucion);
 	}
 	
@@ -93,7 +93,7 @@ public class ResultadosController {
 			  params = { "tipoEjecucion"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public List<Resultados> getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+	public Resultados getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
 		 return resultadosRepository.findByTipoEjecucionOrderBySysdateDesc(tipoEjecucion);
 	}
 	
