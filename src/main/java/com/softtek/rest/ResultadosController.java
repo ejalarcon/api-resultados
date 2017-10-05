@@ -79,6 +79,24 @@ public class ResultadosController {
 		 return resultadosRepository.findAllByUuaasLikeAndPaisOrderBySysdateAsc(uuaa, pais);
 	}
 	
+	@RequestMapping(
+			  value = "/tipoEjecucionAsc", 
+			  params = { "tipoEjecucion"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> getEjecucionPorTipoEjecucionAsc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+		 return resultadosRepository.findByTipoEjecucionOrderBySysdateAsc(tipoEjecucion);
+	}
+	
+	@RequestMapping(
+			  value = "/tipoEjecucionDesc", 
+			  params = { "tipoEjecucion"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+		 return resultadosRepository.findByTipoEjecucionOrderBySysdateDesc(tipoEjecucion);
+	}
+	
 	
 	@RequestMapping(
 			  value = "/paisEntornoAsc", 
