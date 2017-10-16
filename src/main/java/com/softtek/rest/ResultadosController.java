@@ -96,8 +96,7 @@ public class ResultadosController {
 	public Resultados getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
 		 return resultadosRepository.findByTipoEjecucionOrderBySysdateDesc(tipoEjecucion);
 	}
-	
-	
+
 	@RequestMapping(
 			  value = "/paisEntornoAsc", 
 			  params = { "pais", "entorno" }, 
@@ -120,6 +119,24 @@ public class ResultadosController {
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public void addEjecucion(@RequestBody Resultados resultados){
 		resultadosRepository.insert(resultados);
+	}
+	
+	@RequestMapping(
+			  value = "/tipoEjecucionEntornoAsc", 
+			  params = {"tipoEjecucion","entorno"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateAsc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
+		 return resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateAsc(tipoEjecucion, entorno);
+	}
+	
+	@RequestMapping(
+			  value = "/tipoEjecucionEntornoDesc", 
+			  params = {"tipoEjecucion","entorno"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
+		 return resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateDesc(tipoEjecucion, entorno);
 	}
 	
 }

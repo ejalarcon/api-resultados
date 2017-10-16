@@ -27,5 +27,9 @@ public interface ResultadosRepository extends MongoRepository<Resultados, String
 	public Resultados findByTipoEjecucionOrderBySysdateAsc (String tipoEjecucion);
 	
 	public Resultados findByTipoEjecucionOrderBySysdateDesc (String tipoEjecucion);
+	
+	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateAsc (String tipoEjecucion, String entorno);
+	
+	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateDesc (String tipoEjecucion, String entorno);
 
 }
