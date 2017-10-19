@@ -145,7 +145,7 @@ public class ResultadosController {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	public List<Resultados> findAllByTipoEjecucionAndEntornoOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findAllByTipoEjecucionAndEntornoOrderBySysdateDesc(tipoEjecucion, entorno);
+		 return resultadosRepository.findAllByTipoEjecucionAndEntornoOrderBySysdateAsc(tipoEjecucion, entorno);
 	}
 	
 }
