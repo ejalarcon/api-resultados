@@ -148,4 +148,13 @@ public class ResultadosController {
 		 return resultadosRepository.findAllByTipoEjecucionAndEntornoOrderBySysdateAsc(tipoEjecucion, entorno);
 	}
 	
+	@RequestMapping(
+			  value = "/AllByTipoEjecucion", 
+			  params = {"tipoEjecucion"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Resultados> findAllByTipoEjecucionOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+		 return resultadosRepository.findAllByTipoEjecucionOrderBySysdateAsc(tipoEjecucion);
+	}
+	
 }
