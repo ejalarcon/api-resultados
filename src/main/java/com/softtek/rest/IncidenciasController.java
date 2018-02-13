@@ -26,6 +26,18 @@ public class IncidenciasController {
 	public List<Incidencias> getResultados(){
 		return incidenciasRepository.findAll();
 	}
+	
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public void addGrupo(@RequestBody Incidencias incidencias){
+		incidenciasRepository.insert(incidencias);
+	}
+	
+	@RequestMapping(value = "", method = RequestMethod.PUT)
+	public void updateGrupo(@RequestBody Incidencias incidencias){
+		incidenciasRepository.save(incidencias);
+	}
+	
+
 
 
 	
