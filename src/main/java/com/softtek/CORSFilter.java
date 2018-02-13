@@ -16,7 +16,6 @@ public class CORSFilter implements Filter {
 
 	private static final Logger log = Logger.getLogger(CORSFilter.class);
 
-	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
 		log.info("Entramos en CORS Filter...");
@@ -31,11 +30,11 @@ public class CORSFilter implements Filter {
 		chain.doFilter(req, res);
 	}
 
-	@Override
+
 	public void init(FilterConfig filterConfig) {
 	}
 
-	@Override
+
 	public void destroy() {
 	}
 
