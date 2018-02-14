@@ -2,6 +2,7 @@ package com.softtek.rest;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.softtek.CORSFilter;
 import com.softtek.incidencias.Incidencias;
 import com.softtek.incidencias.IncidenciasRepository;
 import com.softtek.resultados.Resultados;
@@ -18,6 +20,8 @@ import com.softtek.resultados.ResultadosRepository;
 @RestController
 @RequestMapping(value = "/api/incidencias")
 public class IncidenciasController {
+	
+	private static final Logger log = Logger.getLogger(IncidenciasController.class);
 
 	@Autowired
 	IncidenciasRepository incidenciasRepository;
@@ -34,17 +38,17 @@ public class IncidenciasController {
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public void updateGrupo(@RequestBody Incidencias incidencias){
-		System.out.println("incidencias.getEstado: "+ incidencias.getEstado());
-		System.out.println("incidencias.getGrupo: "+ incidencias.getGrupo());
+		log.info("incidencias.getEstado: "+ incidencias.getEstado());
+		log.info("incidencias.getGrupo: "+ incidencias.getGrupo());
 		
-		Incidencias inci = existe(incidencias.getGrupo(),incidencias.getEstado());
-		if(inci != null){
-			System.out.println("Existe");
-			incidencias.set_id(inci.get_id());
-		}else{
-			System.out.println("No existe");
-			incidenciasRepository.insert(incidencias);
+		List<Incidencias> inci = incidenciasRepository.findAllByGrupoAndEstado(incidencias.getGrupo(),incidencias.getEstado());
+		if(inci.size()>0){
+			log.info("venga va actualizamos!");
+			Incidencias updatable = inci.get(0);
+			updatable.setBaja(incidencias.getBaja());
+			incidenciasRepository.save(updatable);
 		}
+		
 			
 		
 		
