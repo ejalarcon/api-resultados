@@ -46,6 +46,15 @@ public class IncidenciasController {
 		 return incidenciasRepository.findAllByEstado(estado);
 	}
 	
+	@RequestMapping(
+			  value = "/AllById", 
+			  params = {"_id"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Incidencias> findAllBy_Id(@RequestParam("_id") String _id){				 
+		 return incidenciasRepository.findAllBy_Id(_id);
+	}
+	
 //	@RequestMapping(
 //			  value = "/AllByEstadoGrupo", 
 //			  params = {"estado","_id"}, 
