@@ -48,11 +48,11 @@ public class IncidenciasController {
 	
 	@RequestMapping(
 			  value = "/AllByEstadoGrupo", 
-			  params = {"estado","id"}, 
+			  params = {"estado","_id"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public List<Incidencias> findAllByEstadoAndId(@RequestParam("estado") String estado, @RequestParam("id") String id){				 
-		 return incidenciasRepository.findAllByEstadoAndId(estado,id);
+	public List<Incidencias> findAllByEstadoAndId(@RequestParam("estado") String estado, @RequestParam("_id") String _id){				 
+		 return incidenciasRepository.findAllByEstadoAndId(estado,_id);
 	}
 
 	
