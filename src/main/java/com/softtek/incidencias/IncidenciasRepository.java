@@ -12,6 +12,6 @@ public interface IncidenciasRepository extends MongoRepository<Incidencias, Stri
 	
 	public List<Incidencias> findAllByEstado (String estado);
 	
-	public List<Incidencias> findAllByEstadoAndId (String estado, String _id);
+//	public List<Incidencias> findAllByEstadoAndId (String estado, String _id);
 
 }

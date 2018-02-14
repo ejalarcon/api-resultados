@@ -38,7 +38,7 @@ public class IncidenciasController {
 	}
 	
 	@RequestMapping(
-			  value = "/estado", 
+			  value = "/AllByEstado", 
 			  params = {"estado"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
@@ -46,14 +46,14 @@ public class IncidenciasController {
 		 return incidenciasRepository.findAllByEstado(estado);
 	}
 	
-	@RequestMapping(
-			  value = "/AllByEstadoGrupo", 
-			  params = {"estado","_id"}, 
-			  method = RequestMethod.GET)
-	@ResponseBody
-	public List<Incidencias> findAllByEstadoAndId(@RequestParam("estado") String estado, @RequestParam("_id") String _id){				 
-		 return incidenciasRepository.findAllByEstadoAndId(estado,_id);
-	}
+//	@RequestMapping(
+//			  value = "/AllByEstadoGrupo", 
+//			  params = {"estado","_id"}, 
+//			  method = RequestMethod.GET)
+//	@ResponseBody
+//	public List<Incidencias> findAllByEstadoAndId(@RequestParam("estado") String estado, @RequestParam("_id") String _id){				 
+//		 return incidenciasRepository.findAllByEstadoAndId(estado,_id);
+//	}
 
 	
 }
