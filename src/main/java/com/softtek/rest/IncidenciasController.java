@@ -34,7 +34,8 @@ public class IncidenciasController {
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public void updateGrupo(@RequestBody Incidencias incidencias){
-		incidenciasRepository.save(incidencias);
+		if (!existe(incidencias.getGrupo(),incidencias.getEstado()))
+			incidenciasRepository.save(incidencias);
 	}
 	
 	@RequestMapping(
@@ -64,5 +65,9 @@ public class IncidenciasController {
 //		 return incidenciasRepository.findAllByEstadoAndId(estado,_id);
 //	}
 
+	
+	private boolean existe (String grupo, String estado) {
+		return incidenciasRepository.findAllByGrupoOrEstado(grupo, estado).size()>0;
+	}
 	
 }

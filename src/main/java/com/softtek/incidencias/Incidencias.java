@@ -3,7 +3,7 @@ package com.softtek.incidencias;
 
 public class Incidencias {
 	
-	private String _id;
+	private String grupo;
 	private String estado;
 	private String baja;
 	private String media;
@@ -52,13 +52,14 @@ public class Incidencias {
 	{
 		this.critica = critica;
 	}
-	public String get_id()
+
+	public String getGrupo()
 	{
-		return _id;
+		return grupo;
 	}
-	public void set_id(String _id)
+	public void setGrupo(String grupo)
 	{
-		this._id = _id;
+		this.grupo = grupo;
 	}
 
 
