@@ -45,8 +45,16 @@ public class IncidenciasController {
 		if(inci.size()>0){
 			log.info("venga va actualizamos!");
 			Incidencias updatable = inci.get(0);
+			updatable.setAlta(incidencias.getAlta());
 			updatable.setBaja(incidencias.getBaja());
+			updatable.setCritica(incidencias.getCritica());
+			updatable.setMedia(incidencias.getMedia());
+			updatable.setEstado(incidencias.getEstado());
 			incidenciasRepository.save(updatable);
+		}else {
+			
+			incidenciasRepository.insert(incidencias);
+			
 		}
 		
 			
