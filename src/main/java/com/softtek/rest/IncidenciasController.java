@@ -37,8 +37,23 @@ public class IncidenciasController {
 		incidenciasRepository.save(incidencias);
 	}
 	
-
-
+	@RequestMapping(
+			  value = "/estado", 
+			  params = {"estado"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Incidencias> findAllByEstado(@RequestParam("estado") String estado){				 
+		 return incidenciasRepository.findAllByEstado(estado);
+	}
+	
+	@RequestMapping(
+			  value = "/AllByEstadoGrupo", 
+			  params = {"estado","id"}, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<Incidencias> findAllByEstadoAndId(@RequestParam("estado") String estado, @RequestParam("id") String id){				 
+		 return incidenciasRepository.findAllByEstadoAndId(estado,id);
+	}
 
 	
 }
