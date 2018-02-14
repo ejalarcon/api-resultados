@@ -34,8 +34,10 @@ public class IncidenciasController {
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public void updateGrupo(@RequestBody Incidencias incidencias){
-		if (!existe(incidencias.getGrupo(),incidencias.getEstado()))
+		if (existe(incidencias.getGrupo(),incidencias.getEstado()))
 			incidenciasRepository.save(incidencias);
+		else
+			incidenciasRepository.insert(incidencias);
 	}
 	
 	@RequestMapping(
