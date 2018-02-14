@@ -36,14 +36,18 @@ public class IncidenciasController {
 	public void updateGrupo(@RequestBody Incidencias incidencias){
 		System.out.println("incidencias.getEstado: "+ incidencias.getEstado());
 		System.out.println("incidencias.getGrupo: "+ incidencias.getGrupo());
-		if (existe(incidencias.getGrupo(),incidencias.getEstado())){
+		
+		Incidencias inci = existe(incidencias.getGrupo(),incidencias.getEstado());
+		if(inci != null){
 			System.out.println("Existe");
-			incidenciasRepository.save(incidencias);
-		}
-		else{
+			incidencias.set_id(inci.get_id());
+		}else{
 			System.out.println("No existe");
 			incidenciasRepository.insert(incidencias);
 		}
+			
+		
+		
 	}
 	
 	@RequestMapping(
@@ -74,8 +78,10 @@ public class IncidenciasController {
 //	}
 
 	
-	private boolean existe (String grupo, String estado) {
-		return incidenciasRepository.findAllByGrupoAndEstado(grupo, estado).size()>0;
+	private Incidencias existe (String grupo, String estado) {
+		
+		List<Incidencias> list = incidenciasRepository.findAllByGrupoAndEstado(grupo, estado);
+		return (list.size()>0?list.get(0):null);
 	}
 	
 }
