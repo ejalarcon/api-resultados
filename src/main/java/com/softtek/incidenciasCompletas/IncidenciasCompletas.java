@@ -1,7 +1,7 @@
 package com.softtek.incidenciasCompletas;
 
 
-public class IncidenciaCompleta {
+public class IncidenciasCompletas {
 	
 	private String idIncidencia;
 	private String idPeticion;
