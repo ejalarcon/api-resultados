@@ -8,7 +8,7 @@ public interface IncidenciasCompletasRepository extends MongoRepository<Incidenc
 
 	public List<IncidenciaCompleta> findAll();
 	
-	public void deleteAll();
+//	public void deleteAll();
 	
 	public IncidenciaCompleta findByidIncidencia (String idIncidencia);
 	

@@ -26,15 +26,15 @@ public class IncidenciasCompletasController {
 	
 	
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public void addIncidencia(@RequestBody IncidenciaCompleta incidencia){
-		incidenciasCompletasRepository.insert(incidencia);
-	}
-	
-	@RequestMapping(value = "", method = RequestMethod.DELETE)
-	public void deleteAll(){
-		incidenciasCompletasRepository.deleteAll();
-	}
+//	@RequestMapping(value = "", method = RequestMethod.POST)
+//	public void addIncidencia(@RequestBody IncidenciaCompleta incidencia){
+//		incidenciasCompletasRepository.insert(incidencia);
+//	}
+//	
+//	@RequestMapping(value = "", method = RequestMethod.DELETE)
+//	public void deleteAll(){
+//		incidenciasCompletasRepository.deleteAll();
+//	}
 	
 	@RequestMapping(value = "/byIdIncidencia",
 			params = { "idIncidencia"},
