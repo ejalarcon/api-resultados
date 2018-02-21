@@ -16,6 +16,8 @@ public interface IncidenciasCompletasRepository extends MongoRepository<Incidenc
 	
 	public List<IncidenciasCompletas> findAllByFechaApertura (String FechaApertura);
 	
+	public List<IncidenciasCompletas> findAllByTipo (String tipo);
+	
 	public List<IncidenciasCompletas> findAllByEstado (String estado);
 	
 	public List<IncidenciasCompletas> findAllByMotivoEstado (String motivoEstado);
