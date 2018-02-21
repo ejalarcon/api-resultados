@@ -1,4 +1,4 @@
-package com.softtek.incidencias;
+package com.softtek.incidenciasCompletas;
 
 import java.util.List;
 

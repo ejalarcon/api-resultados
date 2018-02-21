@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.softtek.incidencias.IncidenciaCompleta;
-import com.softtek.incidencias.IncidenciasCompletasRepository;
+import com.softtek.incidenciasCompletas.IncidenciaCompleta;
+import com.softtek.incidenciasCompletas.IncidenciasCompletasRepository;
 
 @RestController
 @RequestMapping(value = "/api/incidenciasCompletas")

@@ -1,4 +1,4 @@
-package com.softtek.incidencias;
+package com.softtek.incidenciasCompletas;
 
 
 public class IncidenciaCompleta {
