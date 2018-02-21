@@ -87,10 +87,10 @@ public class IncidenciasController {
 //	}
 
 	
-	private Incidencias existe (String grupo, String estado) {
-		
-		List<Incidencias> list = incidenciasRepository.findAllByGrupoAndEstado(grupo, estado);
-		return (list.size()>0?list.get(0):null);
-	}
+//	private Incidencias existe (String grupo, String estado) {
+//		
+//		List<Incidencias> list = incidenciasRepository.findAllByGrupoAndEstado(grupo, estado);
+//		return (list.size()>0?list.get(0):null);
+//	}
 	
 }
