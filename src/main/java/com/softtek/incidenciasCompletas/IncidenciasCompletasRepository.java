@@ -48,6 +48,9 @@ public interface IncidenciasCompletasRepository extends MongoRepository<Incidenc
 	
 	public List<IncidenciasCompletas> findAllByFechaReapertura(String fechaReapertura);
 	
+	public List<IncidenciasCompletas> findAllByGrupoAndEstado (String grupo, String estado);
+	
+	
 	
 	
 }
