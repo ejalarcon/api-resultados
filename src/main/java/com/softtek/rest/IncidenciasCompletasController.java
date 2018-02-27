@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.softtek.incidenciasCompletas.IncidenciasCompletas;
 import com.softtek.incidenciasCompletas.IncidenciasCompletasRepository;
+import com.softtek.resultados.Resultados;
 
 @RestController
 @RequestMapping(value = "/api/incidenciasCompletas")
@@ -180,8 +181,8 @@ public class IncidenciasCompletasController {
 			  params = {"grupo", "estado"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public List<IncidenciasCompletas> findAllByGrupoYEstado(@RequestParam("grupo") String grupo, @RequestParam("estado") String estado){				 
-		 return incidenciasCompletasRepository.findAllByGrupoAndEstado(grupo,estado);
+	public List<IncidenciasCompletas> findAllByGrupoAndEstado(@RequestParam("grupo") String grupo, @RequestParam("estado") String estado){				 
+		 return incidenciasCompletasRepository.findAllByGrupoAndEstado(grupo, estado);
 	}
 	
 	
