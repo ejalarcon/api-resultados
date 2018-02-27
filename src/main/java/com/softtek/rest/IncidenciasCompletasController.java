@@ -189,8 +189,8 @@ public class IncidenciasCompletasController {
 			  params = { "grupoAsignado", "estado" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public List<IncidenciasCompletas> findAllByGrupoasignadoAndEstado(@RequestParam("grupoAsignado") String grupoAsignado, @RequestParam("estado") String estado){				 
-		 return incidenciasCompletasRepository.findAllByGrupoasignadoAndEstado(grupoAsignado, estado);
+	public List<IncidenciasCompletas> findAllBygrupoAsignadoAndEstado(@RequestParam("grupoAsignado") String grupoAsignado, @RequestParam("estado") String estado){				 
+		 return incidenciasCompletasRepository.findAllBygrupoAsignadoAndEstado(grupoAsignado, estado);
 	}
 	
 	
