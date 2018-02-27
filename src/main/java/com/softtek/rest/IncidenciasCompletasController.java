@@ -176,14 +176,14 @@ public class IncidenciasCompletasController {
 		 return incidenciasCompletasRepository.findAllByFechaReapertura(fechaReapertura);
 	}
 	
-	@RequestMapping(
-			  value = "/AllByGrupoYEstado", 
-			  params = {"grupo", "estado"}, 
-			  method = RequestMethod.GET)
-	@ResponseBody
-	public List<IncidenciasCompletas> findAllByGrupoAndEstado(@RequestParam("grupo") String grupo, @RequestParam("estado") String estado){				 
-		 return incidenciasCompletasRepository.findAllByGrupoAndEstado(grupo, estado);
-	}
+//	@RequestMapping(
+//			  value = "/AllByGrupoYEstado", 
+//			  params = {"grupo", "estado"}, 
+//			  method = RequestMethod.GET)
+//	@ResponseBody
+//	public List<IncidenciasCompletas> findAllByGrupoAndEstado(@RequestParam("grupo") String grupo, @RequestParam("estado") String estado){				 
+//		 return incidenciasCompletasRepository.findAllByGrupoAndEstado(grupo, estado);
+//	}
 	
 	
 }
