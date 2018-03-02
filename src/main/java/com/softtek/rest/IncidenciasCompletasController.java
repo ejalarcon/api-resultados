@@ -194,4 +194,14 @@ public class IncidenciasCompletasController {
 	}
 	
 	
+	@RequestMapping(
+			  value = "/AllByGrupoAndMotivoEstado", 
+			  params = { "grupoAsignado", "motivoEstado" }, 
+			  method = RequestMethod.GET)
+	@ResponseBody
+	public List<IncidenciasCompletas> findAllByGrupoAndMotivoEstado(@RequestParam("grupoAsignado") String grupoAsignado, @RequestParam("motivoEstado") String motivoEstado){				 
+		 return incidenciasCompletasRepository.findAllByGrupoAndMotivoEstado(grupoAsignado, motivoEstado);
+	}
+	
+	
 }
