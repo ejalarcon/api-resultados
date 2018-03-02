@@ -50,7 +50,6 @@ public interface IncidenciasCompletasRepository extends MongoRepository<Incidenc
 	
 	public List<IncidenciasCompletas> findAllBygrupoAsignadoAndEstado (String grupoAsignado, String estado);
 	
-	public List<IncidenciasCompletas> findAllBygrupoAsignadoAndmotivoEstado (String grupoAsignado, String motivoEstado);
 	
 	
 }
