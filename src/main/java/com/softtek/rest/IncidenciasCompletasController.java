@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.softtek.incidenciasCompletas.IncidenciasCompletas;
 import com.softtek.incidenciasCompletas.IncidenciasCompletasRepository;
+import com.softtek.resultados.Resultados;
 
 @RestController
 @RequestMapping(value = "/api/incidenciasCompletas")
@@ -200,6 +201,11 @@ public class IncidenciasCompletasController {
 	@ResponseBody
 	public List<IncidenciasCompletas> findAllBygrupoAsignadoAndMotivoEstado(@RequestParam("grupoAsignado") String grupoAsignado, @RequestParam("motivoEstado") String motivoEstado){				 
 		 return incidenciasCompletasRepository.findAllBygrupoAsignadoAndMotivoEstado(grupoAsignado, motivoEstado);
+	}
+	
+	@RequestMapping(value = "/getSysdate", method = RequestMethod.GET)
+	public String getSysDate(){
+		return incidenciasCompletasRepository.findAll().get(0).getSysdate();
 	}
 
 	

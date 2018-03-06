@@ -22,6 +22,7 @@ public class IncidenciasCompletas {
 	private String canalEntrada;
 	private String estadoSLM;
 	private String fechaReapertura;
+	private String sysdate;
 	
 	public String getIdIncidencia()
 	{
@@ -174,6 +175,14 @@ public class IncidenciasCompletas {
 	public void setFechaReapertura(String fechaReapertura)
 	{
 		this.fechaReapertura = fechaReapertura;
+	}
+	public String getSysdate()
+	{
+		return sysdate;
+	}
+	public void setSysdate(String sysdate)
+	{
+		this.sysdate = sysdate;
 	}
 
 	
