@@ -50,13 +50,7 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-		<!-- 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		 -->	
+		<plugins>	
 			<plugin>
 				 <groupId>com.microsoft.azure</groupId>
 				 <artifactId>azure-webapp-maven-plugin</artifactId>
@@ -70,17 +64,45 @@
 				       <name>JAVA_OPTS</name> 
 				       <value>-Dserver.port=80</value> 
 				     </property> 
+				     <property> 
+				       <name>spring.data.mongodb.uri</name> 
+				       <value>mongodb://user:pws@host:puerto/database</value> 
+				     </property> 
 				   </appSettings>
 				
 				   <!-- Web App information -->
-				   <resourceGroup>AutomaticTesting</resourceGroup>
+				   <resourceGroup>AutomaticTestingResults</resourceGroup>
 				   <appName>app-resultsauto</appName>
 				   <region>northeurope</region>  
 				
 				   <!-- Java Runtime Stack for Web App on Linux-->
 				   <linuxRuntime>jre8</linuxRuntime>
+				   
 				 </configuration>
 			</plugin>
+			
+			<plugin>
+			    <artifactId>maven-assembly-plugin</artifactId>
+			    <configuration>
+			      <archive>
+			        <manifest>
+			          <mainClass>com.softtek.BuildingapiApplicationTests</mainClass>
+			        </manifest>
+			      </archive>
+			      <descriptorRefs>
+			        <descriptorRef>jar-with-dependencies</descriptorRef>
+			      </descriptorRefs>
+			    </configuration>
+			    <executions>
+			      <execution>
+			      <id>make-assembly</id>
+			      <phase>package</phase>
+			      <goals>
+			        <goal>single</goal>
+			      </goals>
+			      </execution>
+			    </executions>
+		  </plugin>
 		</plugins>
 		
 	</build>
