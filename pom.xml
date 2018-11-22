@@ -5,17 +5,14 @@
 
 	<groupId>com.softtek</groupId>
 	<artifactId>buildingapi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>buildingapi</name>
+	<version>0.0.1</version>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!--<version>1.5.2.RELEASE</version> -->
+		 <version>2.0.5.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -51,10 +48,27 @@
 
 	<build>
 		<plugins>	
+		
+		  	<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
 			<plugin>
 				 <groupId>com.microsoft.azure</groupId>
 				 <artifactId>azure-webapp-maven-plugin</artifactId>
-				 <version>1.4.0</version>
+				 <version>1.5.1</version>
 				 <configuration>
 				   <deploymentType>jar</deploymentType>
 				
@@ -66,7 +80,7 @@
 				     </property> 
 				     <property> 
 				       <name>spring.data.mongodb.uri</name> 
-				       <value>mongodb://user:pws@host:puerto/database</value> 
+				       <value>mongodb://user:pws@host:puerto/database</value> 				       
 				     </property> 
 				   </appSettings>
 				
@@ -74,35 +88,14 @@
 				   <resourceGroup>AutomaticTestingResults</resourceGroup>
 				   <appName>app-resultsauto</appName>
 				   <region>northeurope</region>  
-				
+				   <appServicePlanName>ServicePlan166b8fe9-e272-4a41</appServicePlanName>
 				   <!-- Java Runtime Stack for Web App on Linux-->
 				   <linuxRuntime>jre8</linuxRuntime>
 				   
 				 </configuration>
 			</plugin>
 			
-			<plugin>
-			    <artifactId>maven-assembly-plugin</artifactId>
-			    <configuration>
-			      <archive>
-			        <manifest>
-			          <mainClass>com.softtek.BuildingapiApplicationTests</mainClass>
-			        </manifest>
-			      </archive>
-			      <descriptorRefs>
-			        <descriptorRef>jar-with-dependencies</descriptorRef>
-			      </descriptorRefs>
-			    </configuration>
-			    <executions>
-			      <execution>
-			      <id>make-assembly</id>
-			      <phase>package</phase>
-			      <goals>
-			        <goal>single</goal>
-			      </goals>
-			      </execution>
-			    </executions>
-		  </plugin>
+
 		</plugins>
 		
 	</build>
