@@ -85,10 +85,10 @@
 				   </appSettings>
 				
 				   <!-- Web App information -->
-				   <resourceGroup>AutomaticTestingResults</resourceGroup>
+				   <resourceGroup>AutomaticTestingLinux</resourceGroup>
 				   <appName>app-resultsauto</appName>
 				   <region>northeurope</region>  
-				   <appServicePlanName>ServicePlan166b8fe9-e272-4a41</appServicePlanName>
+				   <appServicePlanName>PlanAppServiceLinux</appServicePlanName>
 				   <!-- Java Runtime Stack for Web App on Linux-->
 				   <linuxRuntime>jre8</linuxRuntime>
 				   
