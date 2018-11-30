@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -92,23 +93,18 @@ public class UploadFileServlet {
 		return false;
 	}
 
-	// protected void doPost(HttpServletRequest request, HttpServletResponse
-	// response)
-	// throws ServletException, IOException {
-
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResultDto uploadFile(HttpServletRequest request, @RequestParam("fileName") MultipartFile file)
-			throws IOException {
+	public ResultDto uploadFile(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("fileName") MultipartFile file) throws IOException {
 		ResultDto resultDto = new ResultDto();
 
 		String auth = request.getHeader("Authorization");
 
 		if (!allowUser(auth)) {
-			// response.setContentType("text/plain");
-			// response.setHeader("WWW-Authenticate", "BASIC realm=\"users\"");
-			// response.sendError(401);
-			resultDto.setCode(ResultDto.RESULT_CODE_KO);
-			resultDto.setMessage("No permitido");
+			response.setContentType("text/plain");
+			response.setHeader("WWW-Authenticate", "BASIC realm=\"users\"");
+			response.sendError(401);
+
 			return resultDto;
 		} else {
 
@@ -116,17 +112,8 @@ public class UploadFileServlet {
 				inicializaProxy(request.getServerName());
 			}
 
-			// response.setContentType("text/html");
-			// PrintWriter out = response.getWriter();
-			// out.write("<html><head></head><body>");
-
 			try {
 				log.info("Se va a parser request...");
-				// List<FileItem> fileItemsList =
-				// this.uploader.parseRequest(request);
-
-				// Iterator<FileItem> fileItemsIterator =
-				// fileItemsList.iterator();
 
 				log.info("Fichero obtenido...");
 				log.info("Nombre de container: " + containerName);
@@ -142,17 +129,7 @@ public class UploadFileServlet {
 					return resultDto;
 				}
 
-				// while (fileItemsIterator.hasNext()) {
-
-				// FileItem fileItem = (FileItem) fileItemsIterator.next();
-				// log.info("FieldName=" + fileItem.getFieldName());
-				// log.info("FileName=" + fileItem.getName());
-				// log.info("ContentType=" + fileItem.getContentType());
-				// log.info("Size in bytes=" + fileItem.getSize());
-
 				String fileName = file.getOriginalFilename();
-
-				// String fileName = fileItem.getName();
 
 				log.info("Fichero a subir: " + fileName);
 
@@ -163,16 +140,9 @@ public class UploadFileServlet {
 					azureUpload.uploadBlob(fileName, file.getInputStream(), file.getSize());
 				}
 
-				// out.write("File " + fileItem.getName() + " uploaded
-				// successfully.");
-				// out.write("<br>");
 				resultDto.setCode(ResultDto.RESULT_CODE_OK);
 				resultDto.setMessage("File " + fileName + " uploaded successfully.");
-				// }
-				// } catch (FileUploadException e) {
-				// resultDto.setCode(ResultDto.RESULT_CODE_KO);
-				// resultDto.setMessage("Exception in uploading file");
-				// log.error("Error subiendo fichero", e);
+
 			} catch (Exception e) {
 				resultDto.setCode(ResultDto.RESULT_CODE_KO);
 				resultDto.setMessage("Exception in uploading file");
