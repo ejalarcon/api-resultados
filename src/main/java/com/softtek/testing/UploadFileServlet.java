@@ -19,10 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.microsoft.azure.storage.core.Base64;
 
 @RestController
-@RequestMapping(value = "/servletFileUpload")
+@RequestMapping(value = "/api/uploadFile")
 public class UploadFileServlet {
-
-	// private ServletFileUpload uploader = null;
 
 	private UnZip unZip = null;
 	private AzureUpload azureUpload = null;
@@ -48,8 +46,6 @@ public class UploadFileServlet {
 	private String accountKey;
 
 	private static Logger log = LogManager.getLogger(UploadFileServlet.class);
-
-	// private final StorageService storageService;
 
 	@PostConstruct
 	public void init() {
