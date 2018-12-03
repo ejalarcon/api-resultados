@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.microsoft.azure.storage.core.Base64;
 
 @RestController
-@RequestMapping(value = "/api/uploadFile")
+@RequestMapping(value = "/servletFileUpload")
 public class UploadFileServlet {
 
 	// private ServletFileUpload uploader = null;
