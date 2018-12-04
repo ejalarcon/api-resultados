@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URLConnection;
 import java.security.InvalidKeyException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +22,8 @@ public class AzureUpload {
 	private CloudStorageAccount storageAccount;
 	private CloudBlobClient blobClient = null;
 	private CloudBlobContainer container = null;
-
+        private Map<String, String> otherMimeTypes = new HashMap<String, String>();
+	
 	private static Logger log = LogManager.getLogger(AzureUpload.class);
 
 	public AzureUpload(String accountName, String accountKey, String endpointSuffix, String containerName)
@@ -35,8 +38,17 @@ public class AzureUpload {
 
 		container = blobClient.getContainerReference(containerName);
 		log.info("CloudBlobContainer creada");
+		this.initMimeTypes();
 	}
 
+	private void initMimeTypes() {
+		otherMimeTypes.put("css", "text/css");
+		otherMimeTypes.put("js", "application/javascript");
+		otherMimeTypes.put("eot", "application/vnd.ms-fontobject");
+		otherMimeTypes.put("svg", "image/svg+xml");
+		otherMimeTypes.put("ttf", "application/font-ttf");
+   	}
+	
 	public void uploadBlob(String name, InputStream sourceStream, long length)
 			throws URISyntaxException, StorageException, IOException {
 
@@ -46,7 +58,7 @@ public class AzureUpload {
 
 		log.debug("CloudBlockBlob creado");
 
-		String mimeType = URLConnection.guessContentTypeFromName(name);
+		String mimeType = this.getWellKnownMimes(name);
 
 		blob.getProperties().setContentType(mimeType);
 		blob.upload(sourceStream, length);
@@ -54,6 +66,25 @@ public class AzureUpload {
 		log.info("Blob " + name + " subido OK del tipo " + mimeType);
 	}
 
+	    private String getWellKnownMimes(String fileName) {
+		String mimeType = URLConnection.guessContentTypeFromName(fileName);
+		if (mimeType == null) {
+		    mimeType = otherMimeTypes.get(getFileExtension(fileName));
+		}
+		return mimeType;
+	    }
+
+	    private String getFileExtension(String fileName) {
+
+		if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
+		    return fileName.substring(fileName.lastIndexOf(".") + 1);
+		} else {
+		    return "";
+
+		}
+	    }
+	
+	
 	private String getStorageConnectionString(String accountName, String accountKey, String endpointSuffix) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=" + accountName + ";AccountKey="
 				+ accountKey + ";EndpointSuffix=" + endpointSuffix;
