@@ -3,6 +3,7 @@ package com.softtek.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +31,8 @@ public class ResultadosController {
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorPais(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisAndEntorno(pais, entorno);
+	public ResponseEntity<Resultados> getEjecucionPorPais(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByPaisAndEntorno(pais, entorno));
 	}
 	
 	@RequestMapping(
@@ -39,8 +40,8 @@ public class ResultadosController {
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisAndEntornoOrderBySysdateDesc(pais, entorno);
+	public  ResponseEntity<Resultados> getEjecucionPorPaisDesc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByPaisAndEntornoOrderBySysdateDesc(pais, entorno));
 	}
 	
 	@RequestMapping(
@@ -48,8 +49,8 @@ public class ResultadosController {
 			  params = { "uuaa","pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String uuaa,@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByUuaasLikeAndPaisAndEntornoOrderBySysdateDesc(uuaa, pais, entorno);
+	public  ResponseEntity<Resultados> getEjecucionPorUUAAPaisDesc(@RequestParam("uuaa") String uuaa,@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByUuaasLikeAndPaisAndEntornoOrderBySysdateDesc(uuaa, pais, entorno));
 	}
 	
 	@RequestMapping(
@@ -57,8 +58,8 @@ public class ResultadosController {
 			  params = { "uuaa","pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorUUAAPaisAsc(@RequestParam("uuaa") String uuaa,@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByUuaasLikeAndPaisAndEntornoOrderBySysdateAsc(uuaa, pais, entorno);
+	public  ResponseEntity<Resultados> getEjecucionPorUUAAPaisAsc(@RequestParam("uuaa") String uuaa,@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByUuaasLikeAndPaisAndEntornoOrderBySysdateAsc(uuaa, pais, entorno));
 	}
 	
 	@RequestMapping(
@@ -84,8 +85,8 @@ public class ResultadosController {
 			  params = { "tipoEjecucion"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorTipoEjecucionAsc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
-		 return resultadosRepository.findByTipoEjecucionOrderBySysdateAsc(tipoEjecucion);
+	public  ResponseEntity<Resultados> getEjecucionPorTipoEjecucionAsc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+		 return this.getResultResponse(resultadosRepository.findByTipoEjecucionOrderBySysdateAsc(tipoEjecucion));
 	}
 	
 	@RequestMapping(
@@ -93,8 +94,8 @@ public class ResultadosController {
 			  params = { "tipoEjecucion"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
-		 return resultadosRepository.findByTipoEjecucionOrderBySysdateDesc(tipoEjecucion);
+	public  ResponseEntity<Resultados> getEjecucionPorTipoEjecucionDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
+		 return this.getResultResponse(resultadosRepository.findByTipoEjecucionOrderBySysdateDesc(tipoEjecucion));
 	}
 
 	@RequestMapping(
@@ -102,8 +103,8 @@ public class ResultadosController {
 			  params = { "pais", "entorno" }, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados getEjecucionPorPaisAsc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByPaisAndEntornoOrderBySysdateAsc(pais, entorno);
+	public  ResponseEntity<Resultados> getEjecucionPorPaisAsc(@RequestParam("pais") String pais, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByPaisAndEntornoOrderBySysdateAsc(pais, entorno));
 	}
 	
 	@RequestMapping(
@@ -126,8 +127,8 @@ public class ResultadosController {
 			  params = {"tipoEjecucion","entorno"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateAsc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateAsc(tipoEjecucion, entorno);
+	public  ResponseEntity<Resultados> findByTipoEjecucionAndEntornoOrderBySysdateAsc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateAsc(tipoEjecucion, entorno));
 	}
 	
 	@RequestMapping(
@@ -135,8 +136,8 @@ public class ResultadosController {
 			  params = {"tipoEjecucion","entorno"}, 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	public Resultados findByTipoEjecucionAndEntornoOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
-		 return resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateDesc(tipoEjecucion, entorno);
+	public  ResponseEntity<Resultados> findByTipoEjecucionAndEntornoOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion, @RequestParam("entorno") String entorno){				 
+		 return this.getResultResponse(resultadosRepository.findByTipoEjecucionAndEntornoOrderBySysdateDesc(tipoEjecucion, entorno));
 	}
 	
 	@RequestMapping(
@@ -155,6 +156,20 @@ public class ResultadosController {
 	@ResponseBody
 	public List<Resultados> findAllByTipoEjecucionOrderBySysdateDesc(@RequestParam("tipoEjecucion") String tipoEjecucion){				 
 		 return resultadosRepository.findAllByTipoEjecucionOrderBySysdateAsc(tipoEjecucion);
+	}
+
+	private ResponseEntity<Resultados> getResultResponse( List<Resultados> results) {
+		
+		if (results != null && !results.isEmpty()) {
+
+			return ResponseEntity.ok()
+			        .body(results.get(0));
+		} else {
+			return ResponseEntity.noContent().build();
+
+		}
+			
+		
 	}
 	
 }
